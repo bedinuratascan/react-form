@@ -3,7 +3,6 @@ import { Avatar, Grid, Paper, TextField, FormControlLabel, Checkbox, Button, Typ
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 const Login = ({ handleChange }) => {
-
     const paperStyle = { padding: 20, height: '73vh', width: 300, margin: '0 auto' }
     const avatarStyle = { backgroundColor: '#1bbd7e' }
     const btnStyle = { margin: '8px 0' }
