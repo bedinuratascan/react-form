@@ -8,6 +8,19 @@ const Signup = () => {
     const paperStyle = { padding: 20, width: 300, margin: '0 auto' }
     const headerStyle = { margin: 0 }
     const avatarStyle = { backgroundColor: '#1bbd7e' }
+    const initialValues = {
+        name: '',
+        email: '',
+        gender: '',
+        phoneNumber: '',
+        password: '',
+        confirmPassword: '',
+        termsAndConditions: false
+    }
+
+    const onSubmit = (values, props) => {
+        console.log(values);
+    }
 
     return (
         <Grid>
@@ -19,23 +32,23 @@ const Signup = () => {
                     <h2 style={headerStyle}>Sign Up</h2>
                     <Typography variant='caption' gutterBottom>Please fill this form to create an account!</Typography>
                 </Grid>
-                <Formik>
+                <Formik initialValues={initialValues} onSubmit={onSubmit}>
                     {
                         (props) => (
                             <Form>
-                                <TextField fullWidth label='Name' placeholder='Please enter name' />
-                                <TextField fullWidth label='Email' />
+                                <Field as={TextField} fullWidth name='name' label='Name' placeholder='Please enter name' />
+                                <Field as={TextField} fullWidth name='email' label='Email' />
                                 <FormControl component="fieldset" style={{ marginTop: 5 }}>
                                     <FormLabel component="legend">Gender</FormLabel>
-                                    <RadioGroup aria-label="Gender" style={{ display: 'initial' }}>
+                                    <Field as={RadioGroup} aria-label="Gender" name="gender" style={{ display: 'initial' }}>
                                         <FormControlLabel value="female" control={<Radio />} label="Female" />
                                         <FormControlLabel value="male" control={<Radio />} label="Male" />
-                                    </RadioGroup>
+                                    </Field>
                                 </FormControl>
-                                <TextField fullWidth label='Phone Number' />
-                                <TextField fullWidth label='Password' />
-                                <TextField fullWidth label='Confirm Password' />
-                                <FormControlLabel control={<Checkbox value="checkedA" />}
+                                <Field as={TextField} fullWidth name="phoneNumber" label='Phone Number' />
+                                <Field as={TextField} fullWidth name="password" label='Password' />
+                                <Field as={TextField} fullWidth name="confirmPassword" label='Confirm Password' />
+                                <FormControlLabel control={<Field as={Checkbox} name="termsAndConditions" />}
                                     label="I accept the terms and conditions."
                                 />
                                 <Button type='submit' color='primary' variant='contained' fullWidth >Sign up</Button>
